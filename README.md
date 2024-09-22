@@ -1,10 +1,13 @@
-# Example Package
+# docker-nuke
+Quickly `kill`, then `rm` a docker container by it's name or SHA.
 
-This is a simple example package. You can use
-[GitHub-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
-to write your content.
+```bash
+% docker-nuke ollama
+Target Locked: 98deb93e20be2ebccc1c8680e28edcdaa9b1a18ef54275f439023cbfa859fda1 ollama
+Fire? (y/N)
+```
 
-
-## Publishing
-Use `make build` to generate the necessary files for upload. Then, use `make publish` to publish it upstream.
-Use `__token__` as the username and the actual token as the password.
+## Install
+```bash
+pip install docker-nuke
+```
