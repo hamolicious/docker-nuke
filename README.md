@@ -9,5 +9,5 @@ Fire? (y/N)
 
 ## Install
 ```bash
-pip install docker-nuke
+pip install hdocker-nuke
 ```

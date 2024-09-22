@@ -1,5 +1,5 @@
 [project]
-name = "docker-nuke"
+name = "hdocker-nuke"
 version = "1.0.0"
 authors = [{ name = "hamolicious", email = "hamolicious@hamolicious.net" }]
 description = "Quickly `kill`, then `rm` a container"
