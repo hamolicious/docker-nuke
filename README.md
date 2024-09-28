@@ -1,3 +1,6 @@
+![GitHub Repo stars](https://img.shields.io/github/stars/hamolicious/docker-nuke?style=flat-square&label=Github%20Stars)
+[![PyPI - Version](https://img.shields.io/pypi/v/docker-nuke?style=flat-square)](https://pypi.org/project/docker-nuke/)
+
 # docker-nuke
 Quickly `kill`, then `rm` a docker container by it's name or SHA.
 
