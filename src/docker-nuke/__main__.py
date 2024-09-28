@@ -18,13 +18,14 @@ def help() -> None:
     print("\n\t<search-term>: partial or whole, name or id")
 
     print("\nArguments:")
-    print("\t--all -a | Nuke all containers")
+    print("\t--all -a  | Nuke all containers")
+    print("\t--help -h | Show this message")
 
 
 def main() -> None:
     args = sys.argv[1::]
 
-    if len(args) < 1:
+    if len(args) < 1 or "--help" in args or "-h" in args:
         help()
         return
 
