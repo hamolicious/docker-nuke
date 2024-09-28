@@ -14,7 +14,11 @@ def help() -> None:
     print("Usage:")
     print("aliased : docker-nuke <search-term>")
     print("python  : python -m docker-nuke <search-term>")
-    print("\t<search-term>: partial or whole, name or id")
+
+    print("\n\t<search-term>: partial or whole, name or id")
+
+    print("\nArguments:")
+    print("\t--all -a | Nuke all containers")
 
 
 def main() -> None:
@@ -24,26 +28,40 @@ def main() -> None:
         help()
         return
 
-    search_term = "".join(args)
+    search_term = " ".join(args)
     client = docker.from_env()
 
     containers: list = client.containers.list()
 
-    search_key = partial(search_sorter, search_term)
-    containers.sort(key=search_key, reverse=True)
+    lock: list = []
+    if search_term not in ["--all", "-a"]:
+        search_key = partial(search_sorter, search_term)
+        containers.sort(key=search_key, reverse=True)
+        lock = [containers[0]]
+    else:
+        lock = containers
+        print(lock)
 
-    lock = containers[0]
+    lock_str = "\n".join([f"\t - {l.id} {l.name}" for l in lock])
 
-    print(f"Target Locked: {lock.id} {lock.name}")
-    user_input = input("Fire? (y/N) ")
+    print(f"Targets Locked:\n {lock_str}")
+    try:
+        user_input = input("Fire? (y/N) ")
+    except KeyboardInterrupt:
+        user_input = "n"
+
     if user_input.lower() != "y":
         print("X Cancelling launch sequence")
         return
 
     print("Launching")
 
-    lock.kill()
-    lock.remove()
+    for cont in lock:
+        print(f"Killing {cont.name}")
+        cont.kill()
+
+        print(f"Removing {cont.name}")
+        cont.remove()
 
     print("All splash")
 
