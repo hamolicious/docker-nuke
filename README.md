@@ -2,6 +2,7 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/hdocker-nuke?style=flat-square)](https://pypi.org/project/hdocker-nuke/)
 
 # docker-nuke
+
 Quickly `kill`, then `rm` a docker container by it's name or SHA.
 
 ```bash
@@ -12,6 +13,7 @@ Fire? (y/N)
 ```
 
 ## Install
+
 ```bash
-pip install hdocker-nuke
+pipx install hdocker-nuke
 ```
